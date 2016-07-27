@@ -1,21 +1,25 @@
 package com.tvgsoft.core.view;
 
+import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import com.tvgsoft.core.viewmodel.BaseViewModel;
 
+import javax.inject.Inject;
+
 /**
  * Created by TVG on 7/19/16.
  */
 
-public class BaseActivity<B extends ViewDataBinding, V extends BaseViewModel> extends AppCompatActivity {
+public abstract class BaseActivity<B extends ViewDataBinding, V extends BaseViewModel> extends AppCompatActivity {
 
     //region Properties
 
     protected B mViewDataBinding;
 
+    @Inject
     protected V mViewModel;
 
     //endregion
@@ -56,6 +60,15 @@ public class BaseActivity<B extends ViewDataBinding, V extends BaseViewModel> ex
         if (mViewModel != null) {
             mViewModel.onDestroy();
         }
+    }
+
+    //endregion
+
+    //region Protected Methods
+
+    protected void setBindingContentView(int layoutResId, int variableId) {
+        mViewDataBinding = DataBindingUtil.setContentView(this, layoutResId);
+        mViewDataBinding.setVariable(variableId, mViewModel);
     }
 
     //endregion

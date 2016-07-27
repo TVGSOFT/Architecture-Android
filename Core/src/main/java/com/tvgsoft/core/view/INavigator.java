@@ -6,6 +6,19 @@ package com.tvgsoft.core.view;
 public interface INavigator {
 
     /**
+     * configure page key.
+     * @param pageKey
+     * @param pageClass
+     */
+    void configure(@Constants.PageKey int pageKey, Class pageClass);
+
+    /**
+     * Get application
+     * @return
+     */
+    BaseApplication getApplication();
+
+    /**
      * Get current key of page.
      * @return
      */

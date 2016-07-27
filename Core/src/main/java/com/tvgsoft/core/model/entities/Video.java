@@ -17,7 +17,7 @@ public class Video extends Entity {
     @SerializedName("sources")
     private List<Source> mSources;
 
-    @SerializedName("thumb")
+    @SerializedName("image-480x270")
     private String mThumb;
 
     @SerializedName("title")

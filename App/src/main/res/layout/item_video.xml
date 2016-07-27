@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.tvgsoft.core.viewmodel.MainViewModel"/>
+
+        <variable
+            name="video"
+            type="com.tvgsoft.core.model.entities.Video"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="?attr/selectableItemBackground"
+        android:onClick="@{() -> viewModel.showDetail(video)}"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp"
+        tools:context=".view.activities.MainActivity">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <ImageView
+                style="@style/AppImageView.Small"
+                app:imageUrl="@{viewModel.getImagesUrl(video)}"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@null"
+                android:contentDescription="@string/contentDescription"
+                android:onClick="@{() -> viewModel.playVideo(video)}"
+                android:src="@drawable/ic_play_circle_outline_white"/>
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/AppTextViewStyle.Large"
+                android:text="@{video.title}"/>
+
+            <TextView
+                style="@style/AppTextViewStyle.Small"
+                android:layout_marginTop="10dp"
+                android:text="@{video.studio}"/>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

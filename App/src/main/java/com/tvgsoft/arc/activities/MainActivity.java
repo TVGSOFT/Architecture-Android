@@ -1,20 +1,45 @@
 package com.tvgsoft.arc.activities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import com.tvgsoft.arc.App;
+import com.tvgsoft.arc.BR;
 import com.tvgsoft.arc.R;
-import com.tvgsoft.core.view.BaseApplication;
-import com.tvgsoft.core.view.Navigator;
+import com.tvgsoft.arc.adapters.VideoListAdapter;
+import com.tvgsoft.arc.databinding.ActivityMainBinding;
+import com.tvgsoft.core.view.BaseActivity;
+import com.tvgsoft.core.viewmodel.MainViewModel;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewModel> {
+
+    //region Properties
+
+    private VideoListAdapter mVideoListAdapter;
+
+    //endregion
+
+    //region Lifecycle
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        App.sharedComponent()
+                .inject(this);
 
-        Navigator navigator = new Navigator((BaseApplication) getApplication());
-        navigator.showBusyIndicator("Loading");
+        super.onCreate(savedInstanceState);
+
+        setBindingContentView(R.layout.activity_main, BR.viewModel);
+
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(layoutManager);
+
+        mVideoListAdapter = new VideoListAdapter();
+        mVideoListAdapter.setViewModel(mViewModel);
+        recyclerView.setAdapter(mVideoListAdapter);
     }
+
+    //endregion
+
 }

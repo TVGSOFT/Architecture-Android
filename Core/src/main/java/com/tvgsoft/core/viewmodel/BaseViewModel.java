@@ -1,7 +1,9 @@
 package com.tvgsoft.core.viewmodel;
 
 import android.databinding.BaseObservable;
-import com.tvgsoft.core.view.Navigator;
+
+import com.tvgsoft.core.view.INavigator;
+
 import org.greenrobot.eventbus.EventBus;
 
 /**
@@ -11,7 +13,7 @@ public abstract class BaseViewModel extends BaseObservable implements IViewModel
 
     //region Properties
 
-    private Navigator mNavigator;
+    private INavigator mNavigator;
 
     private EventBus mEventBus;
 
@@ -23,7 +25,7 @@ public abstract class BaseViewModel extends BaseObservable implements IViewModel
      *
      * @return
      */
-    protected Navigator getNavigator() {
+    protected INavigator getNavigator() {
         return mNavigator;
     }
 
@@ -42,7 +44,7 @@ public abstract class BaseViewModel extends BaseObservable implements IViewModel
      *
      * @param navigator
      */
-    protected BaseViewModel(Navigator navigator) {
+    protected BaseViewModel(INavigator navigator) {
         mNavigator = navigator;
     }
 

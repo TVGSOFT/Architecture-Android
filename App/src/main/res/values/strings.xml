@@ -1,9 +1,10 @@
 <resources>
 
     <!--App information-->
+
     <string name="app_name">Architecture</string>
+    <string name="contentDescription">Description</string>
+
     <!--App information-->
-
-
 
 </resources>

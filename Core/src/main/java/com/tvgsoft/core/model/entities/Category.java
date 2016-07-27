@@ -1,6 +1,7 @@
 package com.tvgsoft.core.model.entities;
 
 import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 /**

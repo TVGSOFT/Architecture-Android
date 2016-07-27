@@ -1,13 +1,16 @@
 package com.tvgsoft.core.viewmodel;
 
+import android.databinding.Bindable;
+import com.tvgsoft.core.BR;
 import com.tvgsoft.core.model.entities.Category;
 import com.tvgsoft.core.model.entities.Video;
 import com.tvgsoft.core.model.entities.VideoDetail;
 import com.tvgsoft.core.model.responses.ResponseCategory;
 import com.tvgsoft.core.model.services.IGoogleApiService;
 import com.tvgsoft.core.view.Constants;
-import com.tvgsoft.core.view.Navigator;
+import com.tvgsoft.core.view.INavigator;
 import java.io.InvalidObjectException;
+import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -15,7 +18,6 @@ import retrofit2.Response;
 /**
  * Created by giaptran on 7/19/16.
  */
-
 public final class MainViewModel extends BaseViewModel {
 
     //region Properties
@@ -24,6 +26,38 @@ public final class MainViewModel extends BaseViewModel {
 
     private Category mCategory;
 
+    private List<Video> mVideos;
+
+    //endregion
+
+    //region Getter and Setter
+
+    @Bindable
+    public Category getCategory() {
+        return mCategory;
+    }
+
+    public void setCategory(Category category) {
+        mCategory = category;
+
+        if (mCategory != null) {
+            setVideos(mCategory.getVideos());
+        } else {
+            setVideos(null);
+        }
+    }
+
+    @Bindable
+    public List<Video> getVideos() {
+        return mVideos;
+    }
+
+    public void setVideos(List<Video> videos) {
+        mVideos = videos;
+
+        notifyPropertyChanged(BR.videos);
+    }
+
     //endregion
 
     //region Constructors
@@ -31,7 +65,7 @@ public final class MainViewModel extends BaseViewModel {
     /**
      * @param navigator
      */
-    protected MainViewModel(Navigator navigator, IGoogleApiService service) {
+    public MainViewModel(INavigator navigator, IGoogleApiService service) {
         super(navigator);
 
         mGoogleApiService = service;
@@ -97,6 +131,10 @@ public final class MainViewModel extends BaseViewModel {
         }
     }
 
+    public String getImagesUrl(Video video) {
+        return getCategory().getImages() + video.getThumb();
+    }
+
     //endregion
 
     //region Private methods
@@ -109,10 +147,11 @@ public final class MainViewModel extends BaseViewModel {
                              public void onResponse(Call<ResponseCategory> call, Response<ResponseCategory> response) {
                                  ResponseCategory responseCategory = response.body();
                                  if (responseCategory != null && !responseCategory.getCategories().isEmpty()) {
-                                     mCategory = response.body()
-                                                         .getCategories()
-                                                         .get(0);
+                                     Category category = response.body()
+                                                                 .getCategories()
+                                                                 .get(0);
 
+                                     setCategory(category);
                                  }
 
                                  getNavigator().hideBusyIndicator();

@@ -7,7 +7,7 @@ import android.os.Bundle;
 /**
  * Created by TVG on 7/18/16.
  */
-public class BaseApplication extends Application implements Application.ActivityLifecycleCallbacks {
+public abstract class BaseApplication extends Application implements Application.ActivityLifecycleCallbacks {
 
     //region Properties
 

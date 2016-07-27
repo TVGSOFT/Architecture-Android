@@ -31,15 +31,17 @@ public class Navigator implements INavigator {
 
     //endregion
 
-    //region Public methods
+    //region INavigator implement
 
-    public void Configure(@Constants.PageKey int pageKey, Class pageClass) {
+    @Override
+    public void configure(@Constants.PageKey int pageKey, Class pageClass) {
         mPages.put(pageKey, pageClass);
     }
 
-    //endregion
-
-    //region INavigator implement
+    @Override
+    public BaseApplication getApplication() {
+        return mApplication;
+    }
 
     @Override
     public @Constants.PageKey int getCurrentKey() {
@@ -141,9 +143,11 @@ public class Navigator implements INavigator {
 
     @Override
     public void showBusyIndicator(String title) {
-        mBusyIndicator = new BusyIndicator(mApplication.getCurrentActivity());
-        mBusyIndicator.setTitle(title);
-        mBusyIndicator.show();
+        if (mApplication.isCurrentActivityAvailable()) {
+            mBusyIndicator = new BusyIndicator(mApplication.getCurrentActivity());
+            mBusyIndicator.setTitle(title);
+            mBusyIndicator.show();
+        }
     }
 
     @Override

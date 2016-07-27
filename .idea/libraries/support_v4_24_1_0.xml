@@ -2,6 +2,7 @@
   <library name="support-v4-24.1.0">
     <ANNOTATIONS>
       <root url="jar://$PROJECT_DIR$/App/build/intermediates/exploded-aar/com.android.support/support-v4/24.1.0/annotations.zip!/" />
+      <root url="jar://$PROJECT_DIR$/App/build/intermediates/exploded-aar/com.android.support/support-v4/24.1.0/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
       <root url="file://$PROJECT_DIR$/App/build/intermediates/exploded-aar/com.android.support/support-v4/24.1.0/res" />
@@ -10,6 +11,7 @@
     </CLASSES>
     <JAVADOC />
     <SOURCES>
+      <root url="jar://$USER_HOME$/Developments/ADT/sdk/extras/android/m2repository/com/android/support/support-v4/24.1.0/support-v4-24.1.0-sources.jar!/" />
       <root url="jar://$USER_HOME$/Developments/ADT/sdk/extras/android/m2repository/com/android/support/support-v4/24.1.0/support-v4-24.1.0-sources.jar!/" />
     </SOURCES>
   </library>
