@@ -5,7 +5,9 @@ import com.tvgsoft.core.view.INavigator;
 import com.tvgsoft.core.viewmodel.DetailViewModel;
 import com.tvgsoft.core.viewmodel.MainViewModel;
 import com.tvgsoft.core.viewmodel.PlayerViewModel;
+
 import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
 

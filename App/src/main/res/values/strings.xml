@@ -1,10 +1,16 @@
 <resources>
 
-    <!--App information-->
-
+    <!--App information start-->
     <string name="app_name">Architecture</string>
     <string name="contentDescription">Description</string>
+    <!--App information end-->
 
-    <!--App information-->
+    <!--Main screen start-->
+    <string name="main_title">Video List</string>
+    <!--Main screen end-->
+
+    <!--Detail screen start-->
+    <string name="detail_title">Video Detail</string>
+    <!--Detail screen end-->
 
 </resources>

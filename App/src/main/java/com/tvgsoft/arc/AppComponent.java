@@ -4,7 +4,9 @@ import com.tvgsoft.arc.activities.DetailActivity;
 import com.tvgsoft.arc.activities.MainActivity;
 import com.tvgsoft.arc.activities.PlayerActivity;
 import com.tvgsoft.core.di.ViewModelModule;
+
 import javax.inject.Singleton;
+
 import dagger.Component;
 
 /**

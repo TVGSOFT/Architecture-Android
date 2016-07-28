@@ -118,6 +118,7 @@ public class VideoDetail extends Entity {
             if (video == null) {
                 throw new InvalidObjectException("Video can't empty.");
             }
+            mVideo = video;
             return this;
         }
 

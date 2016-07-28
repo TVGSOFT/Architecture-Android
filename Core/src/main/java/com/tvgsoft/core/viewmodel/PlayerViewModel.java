@@ -38,7 +38,7 @@ public final class PlayerViewModel extends BaseViewModel {
     //region Constructors
 
     /**
-     * @param navigator
+     * @param navigator Navigate controller.
      */
     public PlayerViewModel(INavigator navigator) {
         super(navigator);
@@ -73,6 +73,10 @@ public final class PlayerViewModel extends BaseViewModel {
 
     //region Public Methods
 
+    /**
+     *
+     * @param data Receive video detail.
+     */
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
     public void onEvent(VideoDetail data) {
         setVideoDetail(data);

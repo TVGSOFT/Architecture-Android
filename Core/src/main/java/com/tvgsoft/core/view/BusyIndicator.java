@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.view.Window;
 import android.widget.TextView;
+
 import com.tvgsoft.core.R;
 
 /**

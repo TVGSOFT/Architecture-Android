@@ -2,6 +2,7 @@ package com.tvgsoft.core.model.responses;
 
 import com.google.gson.annotations.SerializedName;
 import com.tvgsoft.core.model.entities.Category;
+
 import java.util.List;
 
 /**

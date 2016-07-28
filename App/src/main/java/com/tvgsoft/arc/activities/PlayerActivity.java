@@ -1,18 +1,19 @@
 package com.tvgsoft.arc.activities;
 
 import android.os.Bundle;
+
 import com.tvgsoft.arc.App;
 import com.tvgsoft.arc.BR;
 import com.tvgsoft.arc.R;
 import com.tvgsoft.arc.databinding.ActivityPlayerBinding;
 import com.tvgsoft.core.view.BaseActivity;
-import com.tvgsoft.core.viewmodel.DetailViewModel;
+import com.tvgsoft.core.viewmodel.PlayerViewModel;
 
 /**
  * Created by TVG on 7/19/16.
  */
 
-public class PlayerActivity extends BaseActivity<ActivityPlayerBinding, DetailViewModel> {
+public class PlayerActivity extends BaseActivity<ActivityPlayerBinding, PlayerViewModel> {
 
     //region Lifecycle
 

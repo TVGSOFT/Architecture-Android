@@ -1,6 +1,7 @@
 package com.tvgsoft.arc.activities;
 
 import android.os.Bundle;
+
 import com.tvgsoft.arc.App;
 import com.tvgsoft.arc.BR;
 import com.tvgsoft.arc.R;
@@ -19,11 +20,14 @@ public class DetailActivity extends BaseActivity<ActivityDetailBinding, DetailVi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         App.sharedComponent()
-           .inject(this);
+                .inject(this);
 
         super.onCreate(savedInstanceState);
 
         setBindingContentView(R.layout.activity_detail, BR.viewModel);
+
+        setToolbar(R.id.toolbar);
+        setTitle(R.string.detail_title);
     }
 
     //endregion

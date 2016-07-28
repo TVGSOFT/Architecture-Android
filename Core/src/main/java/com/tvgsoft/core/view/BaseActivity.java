@@ -5,6 +5,8 @@ import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+
 import com.tvgsoft.core.viewmodel.BaseViewModel;
 
 import javax.inject.Inject;
@@ -16,6 +18,8 @@ import javax.inject.Inject;
 public abstract class BaseActivity<B extends ViewDataBinding, V extends BaseViewModel> extends AppCompatActivity {
 
     //region Properties
+
+    private Toolbar mToolbar;
 
     protected B mViewDataBinding;
 
@@ -69,6 +73,13 @@ public abstract class BaseActivity<B extends ViewDataBinding, V extends BaseView
     protected void setBindingContentView(int layoutResId, int variableId) {
         mViewDataBinding = DataBindingUtil.setContentView(this, layoutResId);
         mViewDataBinding.setVariable(variableId, mViewModel);
+    }
+
+    protected void setToolbar(int resId) {
+        mToolbar = (Toolbar) findViewById(resId);
+        if (mToolbar != null) {
+            setSupportActionBar(mToolbar);
+        }
     }
 
     //endregion

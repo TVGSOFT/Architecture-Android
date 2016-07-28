@@ -3,7 +3,6 @@ package com.tvgsoft.core.viewmodel;
 import android.databinding.Bindable;
 
 import com.tvgsoft.core.BR;
-import com.tvgsoft.core.model.entities.Video;
 import com.tvgsoft.core.model.entities.VideoDetail;
 import com.tvgsoft.core.view.Constants;
 import com.tvgsoft.core.view.INavigator;
@@ -32,6 +31,7 @@ public final class DetailViewModel extends BaseViewModel {
 
     public void setVideoDetail(VideoDetail videoDetail) {
         mVideoDetail = videoDetail;
+
         notifyPropertyChanged(BR.videoDetail);
     }
 
@@ -40,7 +40,7 @@ public final class DetailViewModel extends BaseViewModel {
     //region Constructors
 
     /**
-     * @param navigator
+     * @param navigator Navigate controller.
      */
     public DetailViewModel(INavigator navigator) {
         super(navigator);
@@ -59,7 +59,6 @@ public final class DetailViewModel extends BaseViewModel {
 
     @Override
     public void onStop() {
-        getEventBus().unregister(this);
 
         super.onStop();
     }
@@ -75,7 +74,10 @@ public final class DetailViewModel extends BaseViewModel {
 
     //region Public Methods
 
-    public void playVideo(Video video) {
+    /**
+     * Play video.
+     */
+    public void playVideo() {
         if (getVideoDetail() != null) {
             getNavigator().navigateTo(Constants.PLAYER_PAGE);
 
@@ -83,9 +85,15 @@ public final class DetailViewModel extends BaseViewModel {
         }
     }
 
+    /**
+     *
+     * @param data Receive video detail.
+     */
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
     public void onEvent(VideoDetail data) {
         setVideoDetail(data);
+
+        getEventBus().unregister(this);
     }
 
     //endregion

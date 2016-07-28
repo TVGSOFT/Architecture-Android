@@ -3,7 +3,9 @@ package com.tvgsoft.core.di;
 import com.tvgsoft.core.view.BaseApplication;
 import com.tvgsoft.core.view.INavigator;
 import com.tvgsoft.core.view.Navigator;
+
 import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
 

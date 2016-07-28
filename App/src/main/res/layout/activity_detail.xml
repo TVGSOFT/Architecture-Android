@@ -35,24 +35,28 @@
                     android:gravity="center">
 
                     <ImageView
-                        style="@style/AppImageView.Small"/>
+                        style="@style/AppImageView.Large"
+                        app:imageUrl='@{viewModel.videoDetail.images + viewModel.videoDetail.video.thumb}'/>
 
                     <ImageButton
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:layout_gravity="center"
+                        android:background="@drawable/ic_play_circle_outline_white"
                         android:contentDescription="@string/contentDescription"
-                        android:background="@drawable/ic_play_circle_outline_white"/>
+                        android:onClick="@{() -> viewModel.playVideo()}"/>
                 </FrameLayout>
 
                 <TextView
                     style="@style/AppTextViewStyle.Large"
-                    android:layout_margin="10dp"/>
+                    android:layout_margin="10dp"
+                    android:text='@{viewModel.videoDetail.video.title + " - " + viewModel.videoDetail.video.studio}'/>
 
                 <TextView
                     style="@style/AppTextViewStyle.Small"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"/>
+                    android:layout_marginRight="10dp"
+                    android:text="@{viewModel.videoDetail.video.subtitle}"/>
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

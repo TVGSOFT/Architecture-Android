@@ -5,11 +5,14 @@ import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+
 import com.tvgsoft.arc.BR;
 import com.tvgsoft.arc.R;
 import com.tvgsoft.core.model.entities.Video;
 import com.tvgsoft.core.view.BaseRecyclerViewAdapter;
+import com.tvgsoft.core.view.ViewHolder;
 import com.tvgsoft.core.viewmodel.MainViewModel;
+
 import java.util.List;
 
 /**
@@ -34,22 +37,6 @@ public class VideoListAdapter extends BaseRecyclerViewAdapter<MainViewModel, Lis
     @Override
     public int getItemCount() {
         return mData == null ? 0 : mData.size();
-    }
-
-    protected static class ViewHolder extends RecyclerView.ViewHolder {
-
-        private ViewDataBinding mViewDataBinding;
-
-        public ViewHolder(ViewDataBinding viewDataBinding) {
-            super(viewDataBinding.getRoot());
-
-            mViewDataBinding = viewDataBinding;
-        }
-
-        public ViewDataBinding getViewDataBinding() {
-            return mViewDataBinding;
-        }
-
     }
 
 }

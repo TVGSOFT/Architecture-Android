@@ -3,6 +3,7 @@ package com.tvgsoft.arc.activities;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+
 import com.tvgsoft.arc.App;
 import com.tvgsoft.arc.BR;
 import com.tvgsoft.arc.R;
@@ -29,6 +30,9 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         super.onCreate(savedInstanceState);
 
         setBindingContentView(R.layout.activity_main, BR.viewModel);
+
+        setToolbar(R.id.toolbar);
+        setTitle(R.string.main_title);
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 

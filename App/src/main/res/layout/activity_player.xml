@@ -16,10 +16,12 @@
         android:orientation="vertical"
         tools:context=".activities.PlayerActivity">
 
-        <WebView
+        <VideoView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"/>
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            app:videoUrl="@{viewModel.videoDetail.mp4 + viewModel.videoDetail.video.sources[2].url}"/>
+
     </LinearLayout>
 
 </layout>

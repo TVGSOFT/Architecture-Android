@@ -1,6 +1,7 @@
 package com.tvgsoft.core.viewmodel;
 
 import android.databinding.Bindable;
+
 import com.tvgsoft.core.BR;
 import com.tvgsoft.core.model.entities.Category;
 import com.tvgsoft.core.model.entities.Video;
@@ -9,14 +10,16 @@ import com.tvgsoft.core.model.responses.ResponseCategory;
 import com.tvgsoft.core.model.services.IGoogleApiService;
 import com.tvgsoft.core.view.Constants;
 import com.tvgsoft.core.view.INavigator;
+
 import java.io.InvalidObjectException;
 import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 /**
- * Created by giaptran on 7/19/16.
+ * Created by TVG on 7/19/16.
  */
 public final class MainViewModel extends BaseViewModel {
 
@@ -63,7 +66,9 @@ public final class MainViewModel extends BaseViewModel {
     //region Constructors
 
     /**
-     * @param navigator
+     *
+     * @param navigator Navigate controller.
+     * @param service GoogleApiService.
      */
     public MainViewModel(INavigator navigator, IGoogleApiService service) {
         super(navigator);
@@ -95,27 +100,35 @@ public final class MainViewModel extends BaseViewModel {
 
     //region Public methods
 
+    /**
+     * Show video detail.
+     * @param video Video want to show.
+     */
     public void showDetail(Video video) {
+        try {
+            VideoDetail videoDetail = new VideoDetail.Builder()
+                                                     .dash(mCategory.getDash())
+                                                     .hls(mCategory.getHls())
+                                                     .mp4(mCategory.getMp4())
+                                                     .images(mCategory.getImages())
+                                                     .video(video)
+                                                     .build();
+
+            getEventBus().postSticky(videoDetail);
+        } catch (InvalidObjectException e) {
+            getNavigator().showMessage("Error", e.getMessage(), "OK", null);
+
+            return;
+        }
+
         getNavigator().navigateTo(Constants.DETAIL_PAGE);
-
-        try {
-            VideoDetail videoDetail = new VideoDetail.Builder()
-                                                     .dash(mCategory.getDash())
-                                                     .hls(mCategory.getHls())
-                                                     .mp4(mCategory.getMp4())
-                                                     .images(mCategory.getImages())
-                                                     .video(video)
-                                                     .build();
-
-            getEventBus().postSticky(videoDetail);
-        } catch (InvalidObjectException e) {
-            getNavigator().showMessage("Error", e.getMessage(), "OK", null);
-        }
     }
 
+    /**
+     * Play video.
+     * @param video Video want to play.
+     */
     public void playVideo(Video video) {
-        getNavigator().navigateTo(Constants.PLAYER_PAGE);
-
         try {
             VideoDetail videoDetail = new VideoDetail.Builder()
                                                      .dash(mCategory.getDash())
@@ -128,11 +141,11 @@ public final class MainViewModel extends BaseViewModel {
             getEventBus().postSticky(videoDetail);
         } catch (InvalidObjectException e) {
             getNavigator().showMessage("Error", e.getMessage(), "OK", null);
-        }
-    }
 
-    public String getImagesUrl(Video video) {
-        return getCategory().getImages() + video.getThumb();
+            return;
+        }
+
+        getNavigator().navigateTo(Constants.PLAYER_PAGE);
     }
 
     //endregion

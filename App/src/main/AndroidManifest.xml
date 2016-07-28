@@ -12,7 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".activities.MainActivity">
+        <activity
+            android:name=".activities.MainActivity"
+            android:label="@string/main_title"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -20,9 +23,14 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activities.DetailActivity"/>
+        <activity
+            android:name=".activities.DetailActivity"
+            android:label="@string/detail_title"
+            android:screenOrientation="portrait"/>
 
-        <activity android:name=".activities.PlayerActivity"/>
+        <activity
+            android:name=".activities.PlayerActivity"
+            android:screenOrientation="portrait"/>
 
     </application>
 
