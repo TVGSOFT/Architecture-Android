@@ -49,16 +49,19 @@ public final class PlayerViewModel extends BaseViewModel {
     //region Lifecycle
 
     @Override
-    public void onStart() {
-        super.onStart();
+    public void onCreate() {
+        super.onCreate();
 
         getEventBus().register(this);
     }
 
     @Override
-    public void onStop() {
-        getEventBus().unregister(this);
+    public void onStart() {
+        super.onStart();
+    }
 
+    @Override
+    public void onStop() {
         super.onStop();
     }
 
@@ -80,6 +83,8 @@ public final class PlayerViewModel extends BaseViewModel {
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
     public void onEvent(VideoDetail data) {
         setVideoDetail(data);
+
+        getEventBus().unregister(this);
     }
 
     //endregion

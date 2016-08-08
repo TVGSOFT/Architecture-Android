@@ -50,16 +50,21 @@ public final class DetailViewModel extends BaseViewModel {
 
     //region Lifecycle
 
+
     @Override
-    public void onStart() {
-        super.onStart();
+    public void onCreate() {
+        super.onCreate();
 
         getEventBus().register(this);
     }
 
     @Override
-    public void onStop() {
+    public void onStart() {
+        super.onStart();
+    }
 
+    @Override
+    public void onStop() {
         super.onStop();
     }
 
